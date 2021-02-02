@@ -1,22 +1,26 @@
 import "./App.css";
 import React, { Component } from "react";
-import Input from "./components/Input";
+import Validation from "./Validation/Validation";
 
 class App extends Component {
   state = {
-    paragraph: "",
+    input: "",
   };
-
-  characterLength = (event) => {
+  inputChangedHandler = (event) => {
     this.setState({
-      paragraph: event.target.value.length,
+      input: event.target.value,
     });
   };
-
   render() {
     return (
       <div>
-        <Input changed={this.characterLength} length={this.state.paragraph} />
+        <input
+          type="text"
+          onChange={this.inputChangedHandler}
+          value={this.state.input}
+        />
+        <p>{this.state.input}</p>
+        <Validation inputLength={this.state.input.length} />
       </div>
     );
   }
