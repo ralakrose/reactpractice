@@ -8,7 +8,11 @@ const Char = (props) => {
     border: "1px solid black",
     textAlign: "center ",
   };
-  return <div style={style}>{props.character}</div>;
+  return (
+    <div style={style} onClick={props.clicked}>
+      {props.character}
+    </div>
+  );
 };
 
 export default Char;

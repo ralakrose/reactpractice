@@ -12,9 +12,22 @@ class App extends Component {
       input: event.target.value,
     });
   };
+
+  deleteCHarHandler = (index) => {
+    const text = this.state.input.split("");
+    text.splice(index, 1);
+    const newText = text.join("");
+    this.setState({ input: newText });
+  };
   render() {
-    const charList = this.state.input.split("").map((char) => {
-      return <Char character={char} />;
+    const charList = this.state.input.split("").map((char, index) => {
+      return (
+        <Char
+          character={char}
+          key={index}
+          clicked={() => this.deleteCHarHandler(index)}
+        />
+      );
     });
 
     return (
